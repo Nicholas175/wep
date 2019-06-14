@@ -1,0 +1,29 @@
+<?php
+include dirname(__DIR__).'/header.phtml';
+?>    
+
+<h2>Touren & Wanderungen</h2>
+<div class="author">
+    <h3>
+        <?=$event->title?>
+        am <?=date("d.m.Y", strtotime($event->eventDate))?> 
+        um <?=date("H:i", strtotime($event->eventDate))?> Uhr 
+    </h3>
+    <table>
+    <tr>
+        <td>Name</td><td>E-Mail</td><td>Anzahl Teilnehmer</td>
+    </tr>   
+    <?php foreach($event->participants as $p): ?>
+    <tr>
+        <td><?=$p->name?></td>
+        <td><?=$p->email?></td>
+        <td><?=$p->numOfPersons?></td>
+        <td>
+            <a href="?controller=event&do=deleteParticipant&id=<?=$p->id?>&eventId=<?=$event->id?>">Entfernen</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+    </table>
+</div>   
+
+<?php include dirname(__DIR__).'/footer.phtml'; ?>

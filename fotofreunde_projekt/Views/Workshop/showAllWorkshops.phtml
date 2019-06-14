@@ -1,0 +1,54 @@
+<?php
+include dirname(__DIR__).'/header.phtml';
+?>    
+
+<h2>Workshops</h2>
+
+<?php foreach ($workshops as $w): ?>
+<div class="row workshops">
+    <div class="col-12 col-m-8">
+        <h3><?=$w->title?></h3>
+    </div>
+    <div class="col-4 col-m-8">
+        <img src="images/<?=$w->filename?>" />
+    </div>
+    <div class="col-5 col-m-5 followElement">
+        <span class="categoryLabel"><?=$w->category?></span>
+        <?=nl2br($w->description)?>
+    </div>
+    <div class="col-3 col-m-3 infobox followElement">
+        <span class="eventDate">
+            <?=date("d.m.Y", strtotime($w->eventDate))?> 
+            um <?=date("H:i", strtotime($w->eventDate))?> Uhr
+        </span><br />
+        <?=$w->firstname?> <?=$w->lastname?><br/>
+        Treffpunkt: <?=$w->location?><br/>
+        max. Teilnehmer: <?=$w->maxParticipants?><br/>
+         <?php if ($w->price == 0): ?>
+            Teilnahme frei
+        <?php else: ?>
+            Kosten: <?=$w->price?> Euro
+        <?php endif; ?> 
+        <br/>
+        Anmeldung unter: <?=$w->email ?>
+        
+    </div>
+    <?php if(isset($_SESSION["userId"])): ?>
+    <div class="col-12 author">
+        <?php if ($w->numOfPersons == 0): ?>
+            <a href="?controller=event&do=deleteEvent&eventId=<?=$w->id?>">Tour l&ouml;schen</a>
+            | <span>Teilnehmer/innen anzeigen</span>
+        <?php else: ?>
+            <span>Tour l&ouml;schen</span>
+            | <a href="?controller=event&do=showEventWithParticipant&eventId=<?=$w->id?>">Teilnehmer/innen anzeigen</a>
+            
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+</div>   
+<?php endforeach; ?>
+
+<?php include dirname(__DIR__).'/footer.phtml'; ?>
+
+           
+

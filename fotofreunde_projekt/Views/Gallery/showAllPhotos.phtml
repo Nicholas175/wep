@@ -1,0 +1,24 @@
+<!-- Aupgabe 2.b -->
+<?php
+include dirname(__DIR__).'/header.phtml';
+?>    
+
+<h2>Galerie</h2>
+
+<div class="row">
+<?php foreach ($photos as $p): ?>
+    <div class="col-4 col-m-6 gallery">
+        <img src="images/<?=$p->filename?>" alt="<?=$p->alt ?>" />
+        <h3><?=$p->title?></h3>
+        <span class="small">by</span> 
+        <?=$p->firstname?><br />
+        <span class="small">in</span>  
+        <?=$p->description?>
+        <span class="small">on <?=date("d.m.Y", strtotime($p->created))?></span> 
+    </div> 
+<?php endforeach; ?>
+</div> 
+<?php include dirname(__DIR__).'/footer.phtml'; ?>
+
+           
+
