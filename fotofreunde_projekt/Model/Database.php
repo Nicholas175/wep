@@ -7,10 +7,10 @@ abstract class Database {
     /**
      * Zugangsdaten für die Datenbank 
      */
-    private $dbName = "fotofreunde"; //Datenbankname
-    private $linkName = "localhost"; //Datenbank-Server
-    private $user = "root"; //Benutzername
-    private $pw = "root"; //Passwort
+    private $dbName = "pbbgh17aty_fotoclub"; //Datenbankname
+    private $linkName = "mysql.pb.bib.de"; //Datenbank-Server
+    private $user = "pbbgh17aty"; //Benutzername
+    private $pw = "9Xuytr9N"; //Passwort
     
     /**
      * Stellt eine Verbindung zur Datenbank her
